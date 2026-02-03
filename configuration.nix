@@ -2,14 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad/t480>
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -77,8 +80,8 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -106,7 +109,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     touchpad = {
       tapping = true;
@@ -158,10 +161,29 @@
      adwaita-icon-theme
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
-     mesa-demos
-     gh
-     git
   ];
+
+  home-manager.users.cc = { pkgs, ... }: {
+    home.stateVersion = "25.11";
+
+    programs.git = {
+      enable = true;
+      settings = {
+        user.name = "Christa Clegg";
+        user.email = "cleggct@gmail.com";
+        init.defaultBranch = "main";
+        pull.rebase = false;
+      };
+    };
+
+    home.packages = with pkgs; [
+      htop
+      bat # better cat
+      ripgrep # better grep
+      mesa-demos
+      gh
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

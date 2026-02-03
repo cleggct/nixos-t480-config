@@ -25,11 +25,13 @@
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/5b0d62cb-5e0c-40ea-8d14-45b51d768540";
+    { device = "/dev/disk/by-uuid/81746023-9c48-4eed-83a8-2b235c947e23";
       fsType = "ext4";
     };
 
-  swapDevices = [ ];
+  swapDevices = [ 
+    { device = "/dev/disk/by-uuid/88b42c81-edbe-4f6a-a1bb-8c790f2f7999"; }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
