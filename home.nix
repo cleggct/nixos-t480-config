@@ -13,12 +13,21 @@
     };
   };
 
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "catppuccin_mocha";
+      editor.true-color = true;
+      editor.line-number = "relative";
+    };
+  };
+  
   home.packages = with pkgs; [
     htop
     bat
     ripgrep
     mesa-demos
     gh
-    helix
+    wl-clipboard
   ];
 }
