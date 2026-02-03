@@ -7,9 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t480>
       ./hardware-configuration.nix
-      <home-manager/nixos>
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -163,27 +161,7 @@
      wget
   ];
 
-  home-manager.users.cc = { pkgs, ... }: {
-    home.stateVersion = "25.11";
-
-    programs.git = {
-      enable = true;
-      settings = {
-        user.name = "Christa Clegg";
-        user.email = "cleggct@gmail.com";
-        init.defaultBranch = "main";
-        pull.rebase = false;
-      };
-    };
-
-    home.packages = with pkgs; [
-      htop
-      bat # better cat
-      ripgrep # better grep
-      mesa-demos
-      gh
-    ];
-  };
+  home-manager.users.cc = import ./home.nix
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
