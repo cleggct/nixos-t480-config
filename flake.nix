@@ -18,7 +18,6 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-t480
         ./hardware-configuration.nix
         ./configuration.nix
-        ./noctalia.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
