@@ -1,7 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   home.stateVersion = "25.11";
+
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
 
   programs.git = {
     enable = true;
@@ -44,6 +48,64 @@
       background_opacity = "0.8";
       background_blur = 5;
     };
+  };
+
+  # configure options
+  programs.noctalia-shell = {
+    enable = true;
+    settings = {
+      # configure noctalia here
+      bar = {
+        density = "compact";
+        position = "right";
+        showCapsule = false;
+        widgets = {
+          left = [
+            {
+              id = "ControlCenter";
+              useDistroLogo = true;
+            }
+            {
+              id = "Network";
+            }
+            {
+              id = "Bluetooth";
+            }
+          ];
+          center = [
+            {
+              hideUnoccupied = false;
+              id = "Workspace";
+              labelMode = "none";
+            }
+          ];
+          right = [
+            {
+              alwaysShowPercentage = false;
+              id = "Battery";
+              warningThreshold = 30;
+            }
+            {
+              formatHorizontal = "HH:mm";
+              formatVertical = "HH mm";
+              id = "Clock";
+              useMonospacedFont = true;
+              usePrimaryColor = true;
+            }
+          ];
+        };
+      };
+      colorSchemes.predefinedScheme = "Catppuccin Lavender";
+      general = {
+        avatarImage = "/home/cc/.purple_flower";
+        radiusRatio = 0.2;
+      };
+      location = {
+        monthBeforeDay = true;
+        name = "Oulu, Finland";
+      };
+    };
+    # this may also be a string or a path to a JSON file.
   };
   
   home.packages = with pkgs; [
