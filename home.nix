@@ -20,7 +20,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "catppuccin_mocha_transparent";
+    #   theme = "catppuccin_mocha_transparent";
       editor.true-color = true;
       editor.line-number = "relative";
       editor.cursor-shape = {
@@ -29,12 +29,12 @@
         select = "underline";
       };
     };
-    themes = {
-      catppuccin_mocha_transparent = {
-        "inherits" = "catppuccin_mocha";
-        "ui.background" = { };
-      };
-    };
+    # themes = {
+    #   catppuccin_mocha_transparent = {
+    #     "inherits" = "catppuccin_mocha";
+    #     "ui.background" = { };
+    #   };
+    # };
   };
 
   programs.kitty = {
@@ -45,8 +45,8 @@
       dynamic_background_opacity = true;
       enable_audio_bell = false;
       window_padding_width = 10;
-      background_opacity = "0.8";
-      background_blur = 5;
+      # background_opacity = "0.8";
+      # background_blur = 5;
     };
   };
 
@@ -97,7 +97,7 @@
       };
       colorSchemes.predefinedScheme = "Catppuccin Lavender";
       general = {
-        avatarImage = "/home/cc/.purple_flower";
+        avatarImage = "/home/cc/Pictures/flower_purple.jpg";
         radiusRatio = 0.2;
       };
       location = {
