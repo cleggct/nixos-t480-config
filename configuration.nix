@@ -162,13 +162,20 @@
       };
 
       monospace = {
-        package = pkgs.iosevka;
-        name = "Iosevka";
+        package = pkgs.nerd-fonts.iosevka-term-slab;
+        name = "Iosevka Term Slab";
       };
 
       emoji = {
         package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
+      };
+
+      sizes = {
+        applications = 12;
+        terminal = 16;
+        desktop = 14;
+        popups = 12;
       };
     };
   };
