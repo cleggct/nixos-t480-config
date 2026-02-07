@@ -6,8 +6,13 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [
+      ./hardware-configuration.nix # Include the results of the hardware scan.
+      ./modules/nixos/hardware.nix
+      ./modules/nixos/graphics.nix
+      ./modules/nixos/power.nix
+      ./modules/nixos/catppuccin.nix
+      # ./modules/nixos/stylix.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -16,34 +21,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 8;
-
-  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = false;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-    
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
-
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
-    ];
-  };
-
-  boot.initrd.kernelModules = [ "i915" ];
 
   networking.hostName = "t480"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -118,67 +95,10 @@
     };
   };
 
-  services.power-profiles-daemon.enable = true;
-  services.thermald.enable = true; # disable if using tlp
-  # services.tlp = {
-  #   enable = true;
-  #   settings = {
-  #     PCIE_ASPM_ON_BAT = "powersupersave";
-  #     RUNTIME_PM_DRIVER_DENYLISTi = "mei_me";
-  #     RUNTIME_PM_ON_AC = "auto";
-  #     SOUND_POWER_SAVE_ON_AC = true;
-  #     SOUND_POWER_SAVE_ON_BAT = true;
-  #     # CPU_SCALING_GOVERNOR_ON_AC = "performance";
-  #     # CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-  #     # CPU_MAX_PERF_ON_AC = "100";
-  #     # CPU_MAX_PERF_ON_BAT = "60";
-  #     STOP_CHARGE_THRESH_BAT1 = "95";
-  #     STOP_CHARGE_THRESH_BAT0 = "95";
-  #   };
-  # };
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.upower.enable = true;
-
-  # system-wide stylix styling
-  stylix =  {
-    enable = true;
-
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    polarity = "dark";
-
-    image = ./wallpaper.jpg;
-
-    fonts = {
-      serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
-      };
-
-      sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
-      };
-
-      monospace = {
-        package = pkgs.nerd-fonts.iosevka-term-slab;
-        name = "Iosevka Term Slab";
-      };
-
-      emoji = {
-        package = pkgs.noto-fonts-color-emoji;
-        name = "Noto Color Emoji";
-      };
-
-      sizes = {
-        applications = 12;
-        terminal = 16;
-        desktop = 14;
-        popups = 12;
-      };
-    };
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cc = {
@@ -205,9 +125,6 @@
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
   ];
-
-  # Enable niri
-  programs.niri.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

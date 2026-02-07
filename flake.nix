@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,15 +23,16 @@
     };    
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, stylix, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, catppuccin, ... }: {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-t480
         ./hardware-configuration.nix
-        stylix.nixosModules.stylix
         ./configuration.nix
+        # stylix.nixosModules.stylix
+        catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
