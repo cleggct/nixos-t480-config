@@ -12,6 +12,7 @@
       ./modules/nixos/graphics.nix
       ./modules/nixos/power.nix
       ./modules/nixos/catppuccin.nix
+      ./modules/nixos/fonts.nix
       # ./modules/nixos/stylix.nix
     ];
 
