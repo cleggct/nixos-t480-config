@@ -17,13 +17,16 @@
     #   url = "github:nix-community/stylix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };    
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, catppuccin, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, catppuccin, niri, ... }: {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -31,7 +34,9 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-t480
         ./hardware-configuration.nix
         ./configuration.nix
-        # stylix.nixosModules.stylix
+        {
+          nixpkgs.overlays = [ niri.overlays.niri ];
+        }        
         catppuccin.nixosModules.catppuccin
         home-manager.nixosModules.home-manager
         {

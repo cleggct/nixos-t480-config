@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
@@ -14,6 +14,7 @@
       ./modules/nixos/catppuccin.nix
       ./modules/nixos/fonts.nix
       # ./modules/nixos/stylix.nix
+      inputs.niri.nixosModules.niri
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -116,6 +117,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Install niri from the sodiboo flake
+  programs.niri.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
