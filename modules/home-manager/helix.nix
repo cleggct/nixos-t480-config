@@ -1,11 +1,12 @@
 { pkgs, ... }:
 {
-  stylix.targets.helix.enable = false;
+  # Disable stylix styling for helix so we can use the built in style
+  # stylix.targets.helix.enable = false;
   
   programs.helix = {
     enable = true;
     settings = {
-      theme = "catppuccin_mocha";
+      # theme = "catppuccin-mocha";
       editor.true-color = true;
       editor.line-number = "relative";
       editor.cursor-shape = {

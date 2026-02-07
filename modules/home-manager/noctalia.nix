@@ -45,7 +45,13 @@
           ];
         };
       };
-      # colorSchemes.predefinedScheme = "Catppuccin Lavender";
+      wallpaper = {
+        enabled = true;
+        directory = "/home/cc/Pictures/flower_purple_ss.jpg";
+        viewMode = "single";
+        fillMode = "crop";
+      };
+      colorSchemes.predefinedScheme = "Catppuccin Lavender";
       general = {
         avatarImage = "/home/cc/Pictures/flower_purple.jpg";
         radiusRatio = 0.2;
