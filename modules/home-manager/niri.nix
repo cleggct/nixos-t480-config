@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   noctalia = cmd: [
@@ -7,7 +7,7 @@ let
 in
 {
   programs.niri = {
-    package = niri;
+    package = pkgs.niri-unstable;
     settings = {
       binds = with config.lib.niri.actions; {
         "Mod+L".action.spawn = noctalia "lockScreen lock";

@@ -10,6 +10,7 @@
     ./modules/home-manager/git.nix
     ./modules/home-manager/helix.nix
     ./modules/home-manager/kitty.nix
+    ./modules/home-manager/niri.nix
     ./modules/home-manager/noctalia.nix
   ];
 
@@ -27,5 +28,6 @@
     gh
     wl-clipboard
     fastfetch
+    fuzzel
   ];
 }
