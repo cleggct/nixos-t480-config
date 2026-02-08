@@ -11,8 +11,8 @@
       dynamic_background_opacity = true;
       enable_audio_bell = false;
       window_padding_width = 10;
-      # background_opacity = "0.8";
-      # background_blur = 5;
+      background_opacity = "0.8";
+      background_blur = 5;
     };
   };
 }
