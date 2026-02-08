@@ -9,6 +9,10 @@ in
   programs.niri = {
     package = pkgs.niri-unstable;
     settings = {
+      layout = {
+        border.enable = false;
+        focus-ring.enable = false;
+      };
       binds = with config.lib.niri.actions; {
         # Launch applications
         "Mod+Return".action.spawn = [ "kitty" ];

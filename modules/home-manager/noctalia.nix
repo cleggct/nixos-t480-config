@@ -45,9 +45,15 @@
           ];
         };
       };
+      ui = {
+        fontDefault = "IBM Plex Sans";
+        fontFixed = "BlexMono Nerd Font";
+        boxBorderEnabled = false;
+      };
       wallpaper = {
         enabled = true;
-        directory = "/home/cc/Pictures/flower_purple_ss.jpg";
+        overviewEnabled = true;
+        directory = "/home/cc/Pictures/flower_purple.jpg";
         viewMode = "single";
         fillMode = "crop";
       };
