@@ -4,6 +4,7 @@
     enable = true;
     settings = {
       # theme = "Catppuccin-Mocha";
+      hide_window_decorations = true;
       font_family = "BlexMono Nerd Font";
       font_size = 14;
       confirm_os_window_close = 0;
