@@ -13,6 +13,28 @@ in
         border.enable = false;
         focus-ring.enable = false;
       };
+      window-rules = [
+        {
+          geometry-corner-radius = {
+            top-left = 20.0;
+            top-right = 20.0;
+            bottom-left = 20.0;
+            bottom-right = 20.0;
+          };
+          clip-to-geometry = true;
+        }
+      ];
+      input = {
+        touchpad = {
+          tap = true;
+          dwt = true;
+          natural-scroll = true;
+      
+          # Try adjusting these for gesture sensitivity:
+          accel-speed = 0.3;  # -1.0 to 1.0, higher = faster/more sensitive
+          accel-profile = "adaptive";  # or "flat"
+        };
+      };
       binds = with config.lib.niri.actions; {
         # Launch applications
         "Mod+Return".action.spawn = [ "kitty" ];
@@ -28,7 +50,7 @@ in
         "Mod+J".action.focus-window-down = [];
         "Mod+K".action.focus-window-up = [];
         
-        # Move windows (vim keys)
+        # Move windows (vim keys)radius
         "Mod+Shift+H".action.move-column-left = [];
         "Mod+Shift+L".action.move-column-right = [];
         "Mod+Shift+J".action.move-window-down = [];
@@ -85,6 +107,9 @@ in
       ];
       environment = {
         "NIXOS_OZONE_WL" = "1";  # For electron apps
+      };
+      debug = {
+        honor-xdg-activation-with-invalid-serial = [];
       };
     };
   };
