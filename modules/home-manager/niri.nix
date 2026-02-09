@@ -10,8 +10,9 @@ in
     package = pkgs.niri-unstable;
     settings = {
       layout = {
-        border.enable = false;
         focus-ring.enable = false;
+        border.enable = false;
+        background-color = "#1e1e2e";
       };
       window-rules = [
         {
@@ -22,6 +23,59 @@ in
             bottom-right = 20.0;
           };
           clip-to-geometry = true;
+        }
+        {
+          # Shadow and offset ONLY for active windows
+          matches = [
+            { is-active = true; }
+          ];
+          shadow = {
+            enable = true;
+            offset = {
+              x = 5;
+              y = 10;
+            };
+            softness = 15.0;
+            color = "#00000080";
+          };
+        }
+        {
+          # Inactive windows - subtle or no shadow
+          matches = [
+            { is-active = false; }
+          ];
+          shadow = {
+            enable = true;
+            offset = {
+              x = 2;
+              y = 5;
+            };
+            softness = 8.0;
+            color = "#00000040";  # lighter shadow
+          };
+        }
+        {
+          # Fix transparency for kitty
+          matches = [
+            { app-id = "kitty"; }
+          ];
+          
+          border = {
+            enable = true;
+            width = 2;
+            active = {
+              gradient = {
+                from = "#f5c2e7";  # catppuccin pink
+                to = "#cba6f7";    # catppuccin mauve
+                angle = 45;        # gradient angle in degrees
+                relative-to = "window";  # or "window"
+              };
+            };
+            inactive = {
+              color = "#b4befe"; # catppuccin lavender
+            };
+          };
+          draw-border-with-background = false;
         }
       ];
       input = {
