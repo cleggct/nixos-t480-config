@@ -9,18 +9,30 @@ in
   programs.niri = {
     package = pkgs.niri-unstable;
     settings = {
+      overview = {
+        # backdrop-color = "#11111b";
+      };
       layout = {
         focus-ring.enable = false;
         border.enable = false;
-        background-color = "#1e1e2e";
+        # Set transparent workspace background color so you see the backdrop at all times.
+        background-color = "transparent";
       };
+      layer-rules = [
+        {
+          matches = [
+            { namespace="^noctalia-wallpaper*"; }
+          ];
+          place-within-backdrop = true;
+        }
+      ];
       window-rules = [
         {
           geometry-corner-radius = {
-            top-left = 20.0;
-            top-right = 20.0;
-            bottom-left = 20.0;
-            bottom-right = 20.0;
+            top-left = 10.0;
+            top-right = 10.0;
+            bottom-left = 10.0;
+            bottom-right = 10.0;
           };
           clip-to-geometry = true;
         }
@@ -31,12 +43,8 @@ in
           ];
           shadow = {
             enable = true;
-            offset = {
-              x = 5;
-              y = 10;
-            };
-            softness = 15.0;
-            color = "#00000080";
+            softness = 25.0;
+            spread = 7.0;
           };
         }
         {
@@ -46,16 +54,11 @@ in
           ];
           shadow = {
             enable = true;
-            offset = {
-              x = 2;
-              y = 5;
-            };
-            softness = 8.0;
-            color = "#00000040";  # lighter shadow
+            softness = 30.0;
+            spread = 5.0;
           };
         }
         {
-          # Fix transparency for kitty
           matches = [
             { app-id = "kitty"; }
           ];
@@ -75,6 +78,7 @@ in
               color = "#b4befe"; # catppuccin lavender
             };
           };
+          # Fix transparency for kitty
           draw-border-with-background = false;
         }
       ];

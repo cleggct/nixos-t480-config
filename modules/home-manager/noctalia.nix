@@ -13,7 +13,7 @@
           left = [
             {
               id = "ControlCenter";
-              useDistroLogo = true;
+              useDistroLogo = false;
             }
             {
               id = "Network";
@@ -50,12 +50,16 @@
         fontFixed = "BlexMono Nerd Font";
         boxBorderEnabled = false;
       };
-      wallpaper = {
-        enabled = true;
-        overviewEnabled = true;
-        directory = "/home/cc/Pictures/flower_purple.jpg";
-        viewMode = "single";
-        fillMode = "crop";
+      defaultWallpaper = "/home/cc/Pictures/flower_purple_ss.jpg";
+      # wallpaper = {
+      #   enabled = true;
+      #   overviewEnabled = true;
+      #   directory = "/home/cc/Pictures/flower_purple_ss.jpg";
+      #   viewMode = "single";
+      #   fillMode = "crop";
+      # };
+      appLauncher = {
+        terminalCommand = "kitty";
       };
       colorSchemes.predefinedScheme = "Catppuccin Lavender";
       general = {
