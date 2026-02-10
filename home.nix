@@ -29,5 +29,6 @@
     wl-clipboard
     fastfetch
     fuzzel
+    nvtopPackages.full
   ];
 }
