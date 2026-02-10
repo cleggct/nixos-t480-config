@@ -13,6 +13,8 @@ in
         # backdrop-color = "#11111b";
       };
       layout = {
+        always-center-single-column = true;
+        empty-workspace-above-first = true;
         focus-ring.enable = false;
         border.enable = false;
         # Set transparent workspace background color so you see the backdrop at all times.
@@ -29,10 +31,10 @@ in
       window-rules = [
         {
           geometry-corner-radius = {
-            top-left = 10.0;
-            top-right = 10.0;
-            bottom-left = 10.0;
-            bottom-right = 10.0;
+            top-left = 2.0;
+            top-right = 2.0;
+            bottom-left = 2.0;
+            bottom-right = 2.0;
           };
           clip-to-geometry = true;
         }
@@ -45,6 +47,10 @@ in
             enable = true;
             softness = 25.0;
             spread = 7.0;
+            offset = {
+              x = 1.0;
+              y = 1.0;
+            };
           };
         }
         {
@@ -56,6 +62,10 @@ in
             enable = true;
             softness = 30.0;
             spread = 5.0;
+            offset = {
+              x = 1.0;
+              y = 1.0;
+            };
           };
         }
         {
@@ -101,6 +111,9 @@ in
         # Window management
         "Mod+Q".action.close-window = [];
         "Mod+F".action.fullscreen-window = [];
+
+        # Overview
+        "Mod+Tab".action.toggle-overview = [];
         
         # Focus windows (vim keys)
         "Mod+H".action.focus-column-left = [];
@@ -135,10 +148,10 @@ in
         "Mod+Shift+5".action.move-column-to-workspace = 5;
         
         # Scroll through workspaces
-        "Mod+Left".action.focus-workspace-down = [];
-        "Mod+Right".action.focus-workspace-up = [];
-        "Mod+Shift+Left".action.move-column-to-workspace-down = [];
-        "Mod+Shift+Right".action.move-column-to-workspace-up = [];
+        "Mod+U".action.focus-workspace-down = [];
+        "Mod+I".action.focus-workspace-up = [];
+        "Mod+Shift+U".action.move-column-to-workspace-down = [];
+        "Mod+Shift+I".action.move-column-to-workspace-up = [];
         
         # Screenshots
         "Print".action.screenshot = [];
