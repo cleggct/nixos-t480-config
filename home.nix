@@ -6,6 +6,7 @@
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     inputs.noctalia.homeModules.default
+    inputs.textfox.homeManagerModules.default
     ./modules/nixos/catppuccin.nix
     ./modules/home-manager/git.nix
     ./modules/home-manager/helix.nix
@@ -18,6 +19,15 @@
     enable = true;
     flavor = "mocha";
     accent = "lavender";
+  };
+
+  textfox = {
+    enable = true;
+    # Replace with the names of profiles, defined in home-manager, or find existing ones in `about:profiles`
+    profiles = ["default"];
+    config = {
+        # Optional config
+    };
   };
 
   home.packages = with pkgs; [
