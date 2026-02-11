@@ -95,7 +95,7 @@ in
         }
       ];
       input = {
-        focus-follows-mouse = {};
+        focus-follows-mouse.enable = true;
         touchpad = {
           tap = true;
           dwt = true;
