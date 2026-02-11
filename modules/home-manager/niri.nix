@@ -16,7 +16,21 @@ in
         always-center-single-column = true;
         empty-workspace-above-first = true;
         focus-ring.enable = false;
-        border.enable = false;
+        border = {
+          enable = true;
+          width = 2;
+          active = {
+            gradient = {
+              from = "#f5c2e7";  # catppuccin pink
+              to = "#cba6f7";    # catppuccin mauve
+              angle = 45;        # gradient angle in degrees
+              relative-to = "window";  # or "window"
+            };
+          };
+          inactive = {
+            color = "#b4befe"; # catppuccin lavender
+          };
+        };
         # Set transparent workspace background color so you see the backdrop at all times.
         background-color = "transparent";
       };
@@ -73,21 +87,7 @@ in
             { app-id = "kitty"; }
           ];
           
-          border = {
-            enable = true;
-            width = 2;
-            active = {
-              gradient = {
-                from = "#f5c2e7";  # catppuccin pink
-                to = "#cba6f7";    # catppuccin mauve
-                angle = 45;        # gradient angle in degrees
-                relative-to = "window";  # or "window"
-              };
-            };
-            inactive = {
-              color = "#b4befe"; # catppuccin lavender
-            };
-          };
+          
           # Fix transparency for kitty
           draw-border-with-background = false;
         }

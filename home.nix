@@ -7,6 +7,7 @@
     inputs.catppuccin.homeModules.catppuccin
     inputs.noctalia.homeModules.default
     inputs.textfox.homeManagerModules.default
+    ./modules/home-manager/firefox.nix
     ./modules/nixos/catppuccin.nix
     ./modules/home-manager/git.nix
     ./modules/home-manager/helix.nix
@@ -40,5 +41,6 @@
     fastfetch
     fuzzel
     nvtopPackages.full
+    nixos-icons
   ];
 }

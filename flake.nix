@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +31,7 @@
     textfox.url = "github:adriankarlen/textfox";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, catppuccin, niri, ... }: {
+  outputs = inputs@{ self, nixpkgs, nur, nixos-hardware, home-manager, catppuccin, niri, ... }: {
     nixosConfigurations.t480 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -35,6 +39,8 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-t480
         ./hardware-configuration.nix
         ./configuration.nix
+        # Adds the NUR overlay
+        nur.modules.nixos.default
         {
           nixpkgs.overlays = [ niri.overlays.niri ];
         }        
