@@ -6,7 +6,7 @@
     enable = true;
     settings = {
       PCIE_ASPM_ON_BAT = "powersupersave";
-      RUNTIME_PM_DRIVER_DENYLISTi = "mei_me";
+      RUNTIME_PM_DRIVER_DENYLIST = "mei_me";
       RUNTIME_PM_ON_AC = "auto";
       SOUND_POWER_SAVE_ON_AC = true;
       SOUND_POWER_SAVE_ON_BAT = true;
