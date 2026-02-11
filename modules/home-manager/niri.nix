@@ -15,21 +15,23 @@ in
       layout = {
         always-center-single-column = true;
         empty-workspace-above-first = true;
-        focus-ring.enable = false;
-        border = {
+        focus-ring = {
           enable = true;
-          width = 2;
+          width = 1;
           active = {
             gradient = {
               from = "#f5c2e7";  # catppuccin pink
               to = "#cba6f7";    # catppuccin mauve
               angle = 45;        # gradient angle in degrees
-              relative-to = "window";  # or "window"
+              relative-to = "window";  # or "workspace"
             };
           };
-          inactive = {
-            color = "#b4befe"; # catppuccin lavender
-          };
+        };
+        border = {
+          enable = true;
+          width = 2;
+          active = { color = "#b4befe"; }; # catppuccin lavender
+          inactive = { color = "#b4befe"; }; # catppuccin lavender
         };
         # Set transparent workspace background color so you see the backdrop at all times.
         background-color = "transparent";
@@ -93,6 +95,7 @@ in
         }
       ];
       input = {
+        focus-follows-mouse = {};
         touchpad = {
           tap = true;
           dwt = true;
@@ -101,6 +104,7 @@ in
           # Try adjusting these for gesture sensitivity:
           accel-speed = 0.3;  # -1.0 to 1.0, higher = faster/more sensitive
           accel-profile = "adaptive";  # or "flat"
+          middle-emulation = false;
         };
       };
       binds = with config.lib.niri.actions; {
