@@ -6,7 +6,7 @@
   imports = [
     inputs.catppuccin.homeModules.catppuccin
     inputs.noctalia.homeModules.default
-    inputs.textfox.homeManagerModules.default
+    # inputs.textfox.homeManagerModules.default
     ./modules/home-manager/firefox.nix
     ./modules/nixos/catppuccin.nix
     ./modules/home-manager/git.nix
@@ -22,14 +22,14 @@
     accent = "lavender";
   };
 
-  textfox = {
-    enable = true;
-    # Replace with the names of profiles, defined in home-manager, or find existing ones in `about:profiles`
-    profiles = ["default"];
-    config = {
-        # Optional config
-    };
-  };
+  # textfox = {
+  #   enable = true;
+  #   # Replace with the names of profiles, defined in home-manager, or find existing ones in `about:profiles`
+  #   profiles = ["default"];
+  #   config = {
+  #       # Optional config
+  #   };
+  # };
 
   home.packages = with pkgs; [
     htop

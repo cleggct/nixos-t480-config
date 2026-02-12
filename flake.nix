@@ -27,8 +27,9 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-    };    
-    textfox.url = "github:adriankarlen/textfox";
+    };
+    # Silly firefox tui theme    
+    # textfox.url = "github:adriankarlen/textfox";
   };
 
   outputs = inputs@{ self, nixpkgs, nur, nixos-hardware, home-manager, catppuccin, niri, ... }: {
